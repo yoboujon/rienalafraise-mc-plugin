@@ -1,12 +1,11 @@
 package fr.yoboujon.rienalafraise;
 
+import java.util.Collection;
 import java.util.logging.Logger;
 
+import fr.yoboujon.rienalafraise.RalfCommand;
 import dev.jorel.commandapi.CommandAPI;
-import dev.jorel.commandapi.CommandAPIBukkitConfig;
-import dev.jorel.commandapi.CommandAPICommand;
-
-import org.bukkit.Bukkit;
+import dev.jorel.commandapi.RegisteredCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Plugin extends JavaPlugin {
@@ -14,19 +13,12 @@ public class Plugin extends JavaPlugin {
 
   @Override
   public void onLoad() {
-    // CommandAPI.onLoad(new CommandAPIBukkitConfig(this).verboseOutput(true)); //
-    // Load with verbose output
+    CommandAPI.registerCommand(RalfCommand.class);
   }
 
   @Override
   public void onEnable() {
     CommandAPI.onEnable();
-    // Register commands, listeners etc.
-    new CommandAPICommand("yoyoping")
-        .executes((sender, args) -> {
-          sender.sendMessage("yoyopong!");
-        })
-        .register();
   }
 
   @Override

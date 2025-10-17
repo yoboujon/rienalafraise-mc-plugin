@@ -30,7 +30,8 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-		<!--This adds the Spigot API artifact to the build -->
+		<!--This
+		adds the Spigot API artifact to the build -->
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
@@ -43,8 +44,14 @@
 			<version>10.1.2</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>dev.jorel</groupId>
+			<artifactId>commandapi-annotations</artifactId>
+			<version>10.1.2</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -59,6 +66,11 @@
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>
+					<configuration>
+						<annotationProcessors>
+							<annotationProcessor>dev.jorel.commandapi.annotations.Annotations</annotationProcessor>
+						</annotationProcessors>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
