@@ -6,6 +6,8 @@ import dev.jorel.commandapi.annotations.arguments.AMultiLiteralArgument;
 import dev.jorel.commandapi.annotations.arguments.APlayerArgument;
 import dev.jorel.commandapi.arguments.PlayerArgument;
 
+import fr.yoboujon.rienalafraise.RalfData;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -37,7 +39,6 @@ public class RalfCommand {
             CommandSender sender,
             @APlayerArgument Player player,
             @AMultiLiteralArgument({ "red", "blue", "green", "yellow" }) String team) {
-        Bukkit.dispatchCommand(sender, "team join " + team + " " + player.getName());
-        sender.sendMessage(player.getName() + " joined team " + team);
+        RalfData.getInstance().addPoint(1);
     }
 }
